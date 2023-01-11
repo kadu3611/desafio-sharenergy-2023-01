@@ -29,9 +29,9 @@ const userController = {
 
         const { id } = req.params;
   
-        const deleteUser = await userModel.findByIdAndUpdate(id, req.body);
+        const updateUser = await userModel.findByIdAndUpdate(id, req.body);
 
-        return res.json(deleteUser);
+        return res.json(updateUser);
 
     },
 
