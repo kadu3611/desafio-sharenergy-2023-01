@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import ContextComponents from '../context/ContextComponents';
 
 function Login() {
@@ -36,9 +36,29 @@ function Login() {
 
 
   const openNextPage = ():void => {
-    console.log('ola');
-    
   }
+
+  const getLocalStorage = useCallback(():void => {
+
+    const getLocal:string | null | object = localStorage.getItem('user')
+    let getJson:{
+      username: '',
+      password:''
+    } | string = ''
+    if (typeof getLocal === 'string') {
+      getJson = JSON.parse(getLocal);
+      const getObject = Object(getJson)
+      const { username, password } = getObject
+      setPassword(password)
+      setUsername(username)
+      setCheckEnable(false)
+    }
+
+  },[setPassword,setUsername, setCheckEnable])
+
+  useEffect(() => {
+    getLocalStorage()
+  },[getLocalStorage])
 
 
   return (
@@ -50,6 +70,7 @@ function Login() {
           name="username"
           type="text"
           onChange={handleInput}
+          value={username.length > 0 ? username : ''}
         />
       </label>
       <label
@@ -59,6 +80,7 @@ function Login() {
           name="password"
           type="password"
           onChange={handleInput}
+          value={password.length > 0 ? password : ''}
         />
       </label>
       <label htmlFor="remember">
