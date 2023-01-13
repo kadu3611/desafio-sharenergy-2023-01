@@ -1,4 +1,5 @@
 import React, { useCallback, useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import ContextComponents from '../context/ContextComponents';
 
 function Login() {
@@ -33,10 +34,6 @@ function Login() {
     setCheckEnable(!checkEnable);
 
   },[checkEnable,password,setCheckEnable,username])
-
-
-  const openNextPage = ():void => {
-  }
 
   const getLocalStorage = useCallback(():void => {
 
@@ -94,13 +91,15 @@ function Login() {
         ></input>
       </label>
       <div>
+      <Link to="/userlist">
         <button
         type="button"
         disabled={disableButton}
-        onClick={() => openNextPage()}
         >
           Log
         </button>
+        </Link>
+
       </div>
 
     </div>

@@ -1,7 +1,8 @@
 import React from 'react';
-import Login from './screens/Login';
+import Login from './pages/Login';
 import './App.css';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import RandomUserGeneration from './pages/RandomUserGeneration';
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
         <Redirect from="/" to="/login"/>
       </Route>
       <Route exact path="/login" component={ Login } />
+      <Route exact path="/userlist" component={ RandomUserGeneration }/>
     </Switch>
   );
 }
