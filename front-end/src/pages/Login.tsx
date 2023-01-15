@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ContextComponents from '../context/ContextComponents';
 
-function Login() {
+const Login: React.FC = () => {
 
   const { contextComponents } = useContext(ContextComponents);
   const { username, password, setUsername, setPassword,

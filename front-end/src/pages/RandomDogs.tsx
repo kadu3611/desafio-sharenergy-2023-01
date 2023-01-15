@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const RandomDogs: React.FC = () => {
 
@@ -17,6 +18,15 @@ type="button"
 >
 Refresh
 </button>
+<Link
+to="/userlist/clients"
+>
+<button
+type="button"
+>
+Clients
+</button>
+</Link>
 </div>
   );
 }
