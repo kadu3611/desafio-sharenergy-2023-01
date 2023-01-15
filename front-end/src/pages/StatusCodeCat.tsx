@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { createBrowserHistory } from 'history';
 import { Link } from 'react-router-dom';
+import Loading from '../components/Loading';
 
 interface History {
     location: {
@@ -31,9 +32,12 @@ const submitApi = async() => {
 useEffect(() => {
     submitApi()
 })
-
+  
   return (
-   
+
+    apiCat.length < 0 ?
+     <Loading/> 
+      :
     <div>
     <img
     src={apiCat}
