@@ -1,4 +1,4 @@
-import React, { useState, useMemo, ReactNode } from 'react';
+import React, { useState, ReactNode } from 'react';
 import ContextComponents from "./ContextComponents";
 
 interface IProps {

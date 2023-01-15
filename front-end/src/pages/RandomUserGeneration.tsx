@@ -1,7 +1,6 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import CardUser from '../components/CardUser';
 import Loading from '../components/Loading';
-import ContextComponents from '../context/ContextComponents';
 
 function RandomUserGeneration() {
 
@@ -54,7 +53,7 @@ function RandomUserGeneration() {
         <div>
             <input type="text"
                 onChange={getFilter}
-                placeholder="Pesquisar"
+                placeholder="search"
             />
             <CardUser
                 items={filterApi}
