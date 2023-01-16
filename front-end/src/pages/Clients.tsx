@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { getAll, registerUser, updatUser,
      findById, deleteClient } from '../helpers/ApiConnect';
+import { getallClient, controllerBoolean, newClient,
+     upClient, viewClient} from '../components/FunctionsClients'
 
 interface Client {
     _id: string,
@@ -28,6 +30,12 @@ const Clients: React.FC = () => {
         CPF: 0
     });
     const [searchUsername, setSearchUsername] = useState('');
+    const [dateClientBoolean, setDateClientBoolean] = useState(false);
+    const [dateDom, setDateDom] = useState(<div></div>);
+
+    console.log(dateDom, 'dateClientBoolean');
+    
+
 
     const listClients = (
         fetch.map((item: Client, index: number) => (
@@ -59,18 +67,18 @@ const Clients: React.FC = () => {
         ))
     )
 
-    const getallClient = useCallback(async () => {
-        const getClients = await getAll();
-        setFetch(getClients)
-    }, [])
+    // const getallClient = useCallback(async () => {
+    //     const getClients = await getAll();
+    //     setFetch(getClients)
+    // }, [])
 
-    const controllerBoolean = (text: string): void => {
-        if (text === "Register Client") setRegisterBoolean(!registerBoolean);
-        else if (text === "Update Client") setUpdateBoolean(!updateBoolean);
-        else if (text === "View information") setViewrBoolean(!viewBoolean);
-        else if (text === "Delete Client") setDeleteBoolean(!deleteBoolean);
+    // const controllerBoolean = (text: string): void => {
+    //     if (text === "Register Client") setRegisterBoolean(!registerBoolean);
+    //     else if (text === "Update Client") setUpdateBoolean(!updateBoolean);
+    //     else if (text === "View information") setViewrBoolean(!viewBoolean);
+    //     else if (text === "Delete Client") setDeleteBoolean(!deleteBoolean);
 
-    }
+    // }
 
     const handleInput = (event: any): void => {
         const { target } = event
@@ -82,32 +90,33 @@ const Clients: React.FC = () => {
         setRegisterDates(allValues)
     }
 
-    const newClient = async () => {
-        const { Nome, Email, Telefone, Endereço, CPF } = registerDates
-        await registerUser(Nome, Email, Telefone, Endereço, CPF)
-        getallClient()
-    }
+    // const newClient = async () => {
+    //     const { Nome, Email, Telefone, Endereço, CPF } = registerDates
+    //     await registerUser(Nome, Email, Telefone, Endereço, CPF)
+    //     getallClient(setFetch)
+    // }
 
-    const upClient = async () => {
-        const { Nome, Email, Telefone, Endereço, CPF } = registerDates
-        await updatUser(searchUsername, Nome, Email,
-            Telefone, Endereço, CPF)
-        getallClient()
-    }
+    // const upClient = async () => {
+    //     const { Nome, Email, Telefone, Endereço, CPF } = registerDates
+    //     await updatUser(searchUsername, Nome, Email,
+    //         Telefone, Endereço, CPF)
+    //     getallClient(setFetch)
+    // }
 
-    const viewClient = async () => {
-        const allDetailsClient = await findById(searchUsername)
-        console.log(allDetailsClient);
+    // const viewClient = async () => {
+    //     const allDetailsClient = await findById(searchUsername)
+    //     console.log(allDetailsClient);
         
-    }
+    // }
 
     const deleteClientId = async () => {
         await deleteClient(searchUsername)
-        getallClient()
+        getallClient(setFetch)
         
     }
 
-    const divRegister = (type: string) => (
+    const divRegister = (setState:React.Dispatch<React.SetStateAction<boolean>>,
+         state:boolean) => (
         <div>
             {
                 arrayInput.map((item: string, index: number) => (
@@ -130,13 +139,13 @@ const Clients: React.FC = () => {
             <div>
                 <button
                     type="button"
-                    onClick={() => newClient()}
+                    onClick={() => newClient(registerDates, setFetch)}
                 >
                     Save
                 </button>
                 <button
                     type="button"
-                    onClick={() => controllerBoolean(type)}
+                    onClick={() => controllerBoolean(setState, state)}
                 >
                     Closed register
                 </button>
@@ -144,19 +153,21 @@ const Clients: React.FC = () => {
         </div>
     );
 
-    const buttonBoolean = (text: string) => (
+    const buttonBoolean = (text: string, setState:React.Dispatch<React.SetStateAction<boolean>>,
+        state:boolean) => (
         <div>
             <button
                 name={text}
                 type="button"
-                onClick={() => controllerBoolean(text)}
+                onClick={() => controllerBoolean(setState, state)}
             >
                 {text}
             </button>
         </div>
     )
 
-    const divSearch = (text: string, type: string) => (
+    const divSearch = (text: string, setState:React.Dispatch<React.SetStateAction<boolean>>,
+        state:boolean) => (
         <div>
             <label>
                 id:
@@ -169,7 +180,8 @@ const Clients: React.FC = () => {
             <button
                 type="button"
                 onClick={() => {
-                    if(text === "view"){ viewClient()
+                    if(text === "view"){ viewClient(searchUsername, 
+                        setDateClientBoolean, dateClientBoolean, setDateDom)
                     }
                     else{
                         deleteClientId()
@@ -182,14 +194,15 @@ const Clients: React.FC = () => {
             </button>
             <button
                 type="button"
-                onClick={() => controllerBoolean(type)}
+                onClick={() => controllerBoolean(setState, state)}
             >
                 Closed register
             </button>
         </div>
     )
 
-    const InputsUpdate = (text:string, type:string) =>(
+    const InputsUpdate = (text:string, setState:React.Dispatch<React.SetStateAction<boolean>>,
+        state:boolean) =>(
         <div>
             <label>
                 id:
@@ -220,13 +233,13 @@ const Clients: React.FC = () => {
             <div>
             <button
                 type="button"
-                onClick={() => upClient()}
+                onClick={() => upClient(registerDates, searchUsername, setFetch)}
             >
                 Save
             </button>
             <button
                 type="button"
-                onClick={() => controllerBoolean(type)}
+                onClick={() => controllerBoolean(setState, state)}
             >
                 Closed register
             </button>
@@ -237,38 +250,44 @@ const Clients: React.FC = () => {
 
     useEffect(() => {
 
-        getallClient()
+        getallClient(setFetch)
 
-    }, [getallClient]);
+    }, []);
 
     return (
         <div>
             {listClients}
             {
                 registerBoolean ?
-                    divRegister("Register Client")
+                    divRegister(setRegisterBoolean, registerBoolean)
                     :
-                    buttonBoolean("Register Client")
+                    buttonBoolean("Register Client", setRegisterBoolean, registerBoolean)
             }
             {
                 updateBoolean ?
 
-                    InputsUpdate("update", "Update Client")
+                    InputsUpdate("update", setUpdateBoolean, updateBoolean)
                     :
-                    buttonBoolean("Update Client")
+                    buttonBoolean("Update Client", setUpdateBoolean, updateBoolean)
             }
             {
                 viewBoolean ?
-                    divSearch("view", "View information")
+                (
+                    dateClientBoolean ? dateDom : 
+                    divSearch("view", setViewrBoolean, viewBoolean)
+                    )
+                    
                     :
-                    buttonBoolean("View information")
+    
+                    buttonBoolean("View information", setViewrBoolean, viewBoolean)
+                    
             }
             {
                 deleteBoolean ?
-                    divSearch("delete", "Delete Client")
+                    divSearch("delete", setDeleteBoolean, deleteBoolean)
 
                     :
-                    buttonBoolean("Delete Client")
+                    buttonBoolean("Delete Client", setDeleteBoolean, deleteBoolean)
 
             }
 
