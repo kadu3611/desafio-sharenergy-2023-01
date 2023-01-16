@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import CardUser from '../components/CardUser';
 import Loading from '../components/Loading';
+import NavBar from '../components/NavBar';
 
 function RandomUserGeneration() {
 
@@ -51,6 +52,7 @@ function RandomUserGeneration() {
     return (
         filterApi.length === 0 ? <Loading/> : 
         <div>
+            <NavBar/>
             <input type="text"
                 onChange={getFilter}
                 placeholder="search"

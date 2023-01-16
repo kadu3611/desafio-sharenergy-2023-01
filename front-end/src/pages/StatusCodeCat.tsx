@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { createBrowserHistory } from 'history';
 import { Link } from 'react-router-dom';
 import Loading from '../components/Loading';
+import NavBar from '../components/NavBar';
 
 interface History {
     location: {
@@ -39,6 +40,7 @@ useEffect(() => {
      <Loading/> 
       :
     <div>
+      <NavBar/>
     <img
     src={apiCat}
     alt="imagem"

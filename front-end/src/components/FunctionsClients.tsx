@@ -13,14 +13,6 @@ interface Client {
     telefone: string,
 }
 
-interface registerDates {
-    Nome: string | undefined;
-    Email: string | undefined;
-    Telefone: number | undefined;
-    Endereço: string | undefined;
-    CPF: number | undefined;
-
-}
 
 interface ItemClient {
     nome: string;
@@ -31,11 +23,7 @@ interface ItemClient {
 }
 
 
-
-const arrayInput = ["Nome", "Email", "Telefone", "Endereço", "CPF"];
-
-
-const listClients = (fetch: []) => (
+const listClients = (fetch: never[]) => (
     fetch.map((item: Client, index: number) => (
         <div
             key={index}
@@ -75,45 +63,6 @@ const controllerBoolean = (setState: React.Dispatch<React.SetStateAction<boolean
     setState(!state);
 
 }
-
-// const handelValue = (event:any) => {
-//     const { target } = event
-//     const { value } = target
-//     return value
-// }
-// const handelName = (event:any) => {
-//     const { target } = event
-//     const { name } = target
-//     return name
-// }
-
-// const handelObject = (registerDates: registeObject , event:any, 
-//     setState: React.Dispatch<React.SetStateAction<{
-//     Nome: string;
-//     Email: string;
-//     Telefone: number;
-//     Endereço: string;
-//     CPF: number;
-// }>>) => {
-//     const value = handelValue()
-//     const name = handelName()
-//     const allValues = {...registerDates, [name]: value }
-//     setState(allValues)
-// }
-
-// const handleInput = (event: any,
-//      setState:React.Dispatch<React.SetStateAction<string>> | React.Dispatch<React.SetStateAction<{
-//         Nome: string;
-//         Email: string;
-//         Telefone: number;
-//         Endereço: string;
-//         CPF: number;
-//     }>>): void => {
-//     const { target } = event
-//     const { value } = target
-//         setState(value)
-//     }
-
 
 const newClient = async (registerDates: {
     Nome: string;
@@ -187,140 +136,12 @@ const viewClient = async (searchUsername: string,
 }
 
 
-// const deleteClientId = async () => {
-//     await deleteClient(searchUsername)
-//     getallClient()
+const deleteClientId = async (searchUsername:string,
+     setFetch: React.Dispatch<React.SetStateAction<never[]>>) => {
+    await deleteClient(searchUsername)
+    getallClient(setFetch)
 
-// }
-
-// const divRegister = (type: string) => (
-//     <div>
-//         {
-//             arrayInput.map((item: string, index: number) => (
-//                 <div
-//                     key={index}
-//                 >
-//                     <label>
-//                         {item}
-//                         <input
-//                             name={item}
-//                             type={item === "Telefone" || item === "CPF"
-//                                 ?
-//                                 "number" : "text"}
-//                             onChange={handleInput}
-//                         />
-//                     </label>
-//                 </div>
-//             ))
-//         }
-//         <div>
-//             <button
-//                 type="button"
-//                 onClick={() => newClient()}
-//             >
-//                 Save
-//             </button>
-//             <button
-//                 type="button"
-//                 onClick={() => controllerBoolean(type)}
-//             >
-//                 Closed register
-//             </button>
-//         </div>
-//     </div>
-// );
-
-// const buttonBoolean = (text: string) => (
-//     <div>
-//         <button
-//             name={text}
-//             type="button"
-//             onClick={() => controllerBoolean(text)}
-//         >
-//             {text}
-//         </button>
-//     </div>
-// )
-
-// const divSearch = (text: string, type: string) => (
-//     <div>
-//         <label>
-//             id:
-//             <input
-//                 type="text"
-//                 name={text}
-//                 onChange={handleInput}
-//             />
-//         </label>
-//         <button
-//             type="button"
-//             onClick={() => {
-//                 if(text === "view"){ viewClient()
-//                 }
-//                 else{
-//                     deleteClientId()
-//                 }
-//             }}
-//         >
-//             {
-//                 text === "view" ? "Search" : "Delete"
-//             }
-//         </button>
-//         <button
-//             type="button"
-//             onClick={() => controllerBoolean(type)}
-//         >
-//             Closed register
-//         </button>
-//     </div>
-// )
-
-// const InputsUpdate = (text:string, type:string) =>(
-//     <div>
-//         <label>
-//             id:
-//             <input
-//                 type="text"
-//                 name={text}
-//                 onChange={handleInput}
-//             />
-//         </label>
-//         {
-//             arrayInput.map((item: string, index: number) => (
-//                 <div
-//                     key={index}
-//                 >
-//                     <label>
-//                         {item}
-//                         <input
-//                             name={item}
-//                             type={item === "Telefone" || item === "CPF"
-//                                 ?
-//                                 "number" : "text"}
-//                             onChange={handleInput}
-//                         />
-//                     </label>
-//                 </div>
-//             ))
-//         }
-//         <div>
-//         <button
-//             type="button"
-//             onClick={() => upClient()}
-//         >
-//             Save
-//         </button>
-//         <button
-//             type="button"
-//             onClick={() => controllerBoolean(type)}
-//         >
-//             Closed register
-//         </button>
-//         </div>
-//     </div>
-//     )
-
-
+}
 
 
 export {
@@ -328,5 +149,7 @@ export {
     controllerBoolean,
     newClient,
     upClient,
-    viewClient
+    viewClient,
+    deleteClientId,
+    listClients,
 };

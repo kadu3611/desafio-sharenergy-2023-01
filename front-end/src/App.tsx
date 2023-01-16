@@ -19,8 +19,6 @@ const App: React.FC = () => {
       <Route exact path="/userlist/randomDogs" component={ RandomDogs }/>
       <Route exact path="/userlist/clients" component={ Clients }/>
       <Route exact path="/userlist/:id" component={ StatusCodeCat }/>
-
-
     </Switch>
   );
 }
