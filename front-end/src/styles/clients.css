@@ -1,0 +1,218 @@
+  
+.client-all {
+    padding: 0;
+    margin: 0;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    width: 100%;
+    
+}
+
+.client-line {
+    display: flex;
+    width: 20%;
+}
+
+.client-item{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    padding-left:5px;
+    width: 75%;
+}
+
+.div-name{
+    font-size: 25px;
+}
+
+#client-button {
+    font-size: 20px;
+}
+
+.client-div-button{
+    padding-bottom: 5px;
+}
+
+.client-div-button-register {
+    padding-bottom: 5px;
+    padding-left: 5px;
+    display: flex;
+    justify-content: space-around;
+    width: 65%;
+}
+
+.client-div-update {
+    padding-left: 5px;
+    padding-bottom: 5px;
+
+    display: flex;
+    justify-content: space-around;
+    width: 75%;
+}
+
+.client-div-bottom-button {
+    display: flex;
+}
+#client-bottom-button {
+    padding-right: 5px;
+}
+
+#client-button-register {
+    padding: 5px;
+}
+
+.client-div-update-map{
+    display: flex;
+}
+
+.client-div-delete-view{
+    display: flex;
+    width: 70%;
+}
+
+.client-div-view-closed {
+    display: block;
+    position: relative;
+    top: 17px;
+
+}
+
+#client-button-search-view {
+    position: relative;
+    left: 293px;
+    bottom: 21px;
+
+}
+
+.client-div-delete-closed {
+    display: block;
+    position: relative;
+    top: 18px;
+    right: 0px;
+}
+
+#client-button-search-delete {
+    position: relative;
+    left: 293px;
+    bottom: 20px;
+
+}
+
+@media(max-width: 1250px) {
+    .div-name{
+        font-size: 18px;
+    }
+
+    #client-button {
+        font-size: 14px;
+    }
+
+    .client-div-update {
+        display: block;
+    }
+
+
+.client-div-button-register {
+
+    display: block;
+
+}
+
+}
+
+@media(max-width: 980px) {
+    .client-all
+    {
+        padding: 0;
+        padding-top: 10px;
+        margin: 0;
+        display: block;
+        
+    }
+
+    .client-item{
+        padding: 0;
+        margin: 0;
+        display: flex;
+        padding-bottom: 3%;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .div-name{
+        font-size: 16px;
+    }
+
+
+}
+
+@media(max-width: 420px) {
+    .div-name{
+        font-size: 14px;
+    }
+
+.client-div-button-register {
+    display: block;
+}
+
+.client-div-bottom-button {
+    display: flex;
+}
+#client-bottom-button {
+    padding-right: 0px;
+}
+
+#client-button-register {
+    padding: 2px;
+}
+
+.client-label-register {
+    font-size: 14px;
+}
+
+
+/* ----------------------------------- */
+
+.client-div-view-closed {
+    font-size: 5px;
+    display: block;
+    position: relative;
+    top: 17px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+
+}
+
+#client-button-search-view {
+    position: relative;
+    left: 255px;
+    bottom: 21px;
+
+}
+
+.client-div-delete-closed {
+    display: inline;
+    padding: 0;
+    position: relative;
+    top: 13px;
+    right: 0px;
+}
+
+#client-button-search-delete {
+    position: relative;
+    left: 255px;
+    bottom: 20px;
+
+}
+
+#client-button-closed {
+    font-size: 8px;
+    padding: 5px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+}

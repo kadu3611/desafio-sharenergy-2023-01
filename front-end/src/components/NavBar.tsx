@@ -1,33 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../styles/navBar.css';
 
 const NavBar: React.FC = () => {
 
     return (
-        <div>
+        <div >
             <nav>
                 <div>
-                    <ul>
+                    <ul className='nav-ul'>
 
-                        <li>
+                        <li className='nav-il '>
                             <Link
                                 to="/userlist">
                                 Home
                             </Link>
                         </li>
-                        <li>
+                        <li className='nav-il '>
                             <Link
                                 to="/userlist/randomDogs">
                                 Random Dogs
                             </Link>
                         </li>
-                        <li>
+                        <li className='nav-il '>
                             <Link
                                 to="/userlist/clients">
                                 Clients
                             </Link>
                         </li>
-                        <li>
+                        <li className='nav-il '>
                             <Link
                                 to="/userlist/100">
                                 Random Cats

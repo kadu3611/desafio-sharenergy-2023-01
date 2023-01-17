@@ -1,0 +1,50 @@
+  
+.cats-all {
+    padding: 0;
+    margin: 0;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+#cat-img {
+    width: 100%;
+}
+
+#cat-div-img {
+    display: flex;
+        justify-content: center;
+        padding-bottom: 2%;
+}
+
+#cat-button{
+    padding: 20%;
+    padding-left: 60%;
+    padding-right: 60%;
+
+}
+
+@media(max-width: 700px) {
+    #cat-img {
+        display: flex;
+        justify-content: center;
+        width: 70%;
+    }
+
+}
+
+@media(max-width: 400px) {
+
+    #cat-button{
+        padding: 20%;
+    padding-left: 60%;
+    padding-right: 60%;
+    
+    }
+
+
+}

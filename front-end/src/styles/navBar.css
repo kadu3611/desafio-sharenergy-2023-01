@@ -1,0 +1,36 @@
+  
+.nav-ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-il {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    padding-left: 2%;
+    padding-top: 2%;
+    font-size: 20px;
+}
+
+#padding-body {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0.25%;
+}
+
+
+@media(max-width: 700px) {
+    .nav-il {
+        display: flex;
+        padding: 0;
+        margin: 0;
+        padding-left: 2%;
+        padding-top: 2%;
+        font-size: 14px;
+    }
+
+
+}

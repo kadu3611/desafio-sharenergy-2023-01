@@ -1,7 +1,8 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import CardUser from '../components/CardUser';
 import Loading from '../components/Loading';
 import NavBar from '../components/NavBar';
+import '../styles/randonUser.css'
 
 function RandomUserGeneration() {
 
@@ -50,18 +51,32 @@ function RandomUserGeneration() {
 
 
     return (
-        filterApi.length === 0 ? <Loading/> : 
-        <div>
-            <NavBar/>
-            <input type="text"
-                onChange={getFilter}
-                placeholder="search"
-            />
-            <CardUser
-                items={filterApi}
-            />
+        filterApi.length === 0 ? <Loading /> :
+            <div>
+                <NavBar />
+                <div
+                className='randon-all'
+                >
+                    <div
+                        className="randon-filter"
+                    >
+                        <input 
+                        id='input-filter'
+                        type="text"
+                            onChange={getFilter}
+                            placeholder="search"
+                        />
+                    </div>
+                    <div
+                        className="randon-card"
+                    >
+                        <CardUser
+                            items={filterApi}
+                        />
+                    </div>
+                </div>
 
-        </div>
+            </div>
     );
 }
 

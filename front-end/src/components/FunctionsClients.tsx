@@ -3,6 +3,8 @@ import {
     getAll, registerUser, updatUser,
     findById, deleteClient
 } from '../helpers/ApiConnect';
+import '../styles/clients.css'
+
 
 interface Client {
     _id: string,
@@ -24,29 +26,48 @@ interface ItemClient {
 
 
 const listClients = (fetch: never[]) => (
-    fetch.map((item: Client, index: number) => (
+fetch.map((item: Client, index: number) => (
         <div
             key={index}
+            className='client-item'
         >
             <div>
-                <div>
+                <div
+                className='div-name'
+                >
                     Id: {item._id}
                 </div>
-                <div>
+                <div
+                className='div-name'
+                >
                     Nome: {item.nome}
                 </div>
-                <div>
+                <div
+                className='div-name'
+                
+                >
                     Email: {item.email}
                 </div>
-                <div>
+                <div
+                className='div-name'
+                >
                     Telefone: {item.telefone}
                 </div>
-                <div>
+                <div
+                className='div-name'
+                >
                     Endereço: {item.endereço}
                 </div>
-                <div>
+                <div
+                className='div-name'
+                >
                     CPF: {item.cpf}
                 </div>
+            </div>
+            <div
+                className='client-line'
+            >
+                -
             </div>
         </div>
 
@@ -59,9 +80,9 @@ const getallClient = async (setFetch: React.Dispatch<React.SetStateAction<never[
 }
 
 const controllerBoolean = (setState: React.Dispatch<React.SetStateAction<boolean>>,
-    state: boolean): void => {
+    state: boolean,
+): void => {
     setState(!state);
-
 }
 
 const newClient = async (registerDates: {
@@ -136,8 +157,8 @@ const viewClient = async (searchUsername: string,
 }
 
 
-const deleteClientId = async (searchUsername:string,
-     setFetch: React.Dispatch<React.SetStateAction<never[]>>) => {
+const deleteClientId = async (searchUsername: string,
+    setFetch: React.Dispatch<React.SetStateAction<never[]>>) => {
     await deleteClient(searchUsername)
     getallClient(setFetch)
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/cardUser.css'
 
 interface Props {
     items: {
@@ -19,28 +20,43 @@ interface Props {
     }[];
 }
 
-    //foto do usuário, nome completo, email, username e idade
-
-
 const CardUser: React.FC<Props> = ({ items }) => {
     return (
-        <div>
+        <div
+        className='card-flex'
+        >
             {items.map((item, index) => (
-                <div key={index}>
+                <div 
+                className='card-filter'
+                key={index}
+                
+                >
                     <img
+                    id='img-item'
                     src={item.picture.large} 
                     alt="Foto do usuário"
                     />
-                        <div>
+                        <div 
+                        className='div-dates'
+                        >
                             {`Nome completo: ${item.name.first} ${item.name.last}`}
                         </div>
-                        <div>
+                        <div
+                        className='div-dates'
+                        
+                        >
                             {`Email: ${item.email}`}
                         </div>
-                        <div>
+                        <div
+                        className='div-dates'
+
+                        >
                             {`Username: ${item.login.username}`}
                         </div>
-                        <div>
+                        <div
+                        className='div-dates'
+                        
+                        >
                             {`Idade: ${item.registered.age}`}
                         </div>
                 </div>

@@ -1,0 +1,92 @@
+
+.App-body {
+    padding: 0;
+margin: 0;
+    padding-top: 15%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#padding-body {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0.25%;
+
+
+}
+
+#padding-label {
+    font-size: 20px;
+    padding-right: 20%;
+
+}
+
+#padding-input {
+    padding: 0%;
+    font-size: 20px;
+    padding-left: 20%;
+}
+
+#div-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
+    width: 100%;
+    position: relative;
+    right: 60px;
+
+}
+
+#button-size {
+    display: flex;
+    margin: 0;
+    padding: 50%;
+    padding-left: 200%;
+    padding-right: 200%;
+    font-size: 15px;
+}
+
+#label-size {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 5px;
+    font-size: 16px;
+}
+
+
+@media(max-width: 450px) {
+    #label-size {
+        padding-bottom: 3px;
+        font-size: 14px;
+    }
+
+    #button-size {
+        padding: 5px;
+        padding-left: 80px;
+        padding-right: 80px;
+        font-size: 12px;
+    }
+
+    #div-button {
+        right: 0px;
+    }
+
+    #padding-input {
+        padding: 0%;
+        font-size: 14px;
+        padding-left: 10%;
+    }
+
+    #padding-label {
+        font-size: 14px;
+        padding-right: 0;
+    
+    }
+
+
+}

@@ -1,6 +1,8 @@
 import React, { useCallback, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ContextComponents from '../context/ContextComponents';
+import '../styles/global.css'
+
 
 const Login: React.FC = () => {
 
@@ -59,40 +61,50 @@ const Login: React.FC = () => {
 
 
   return (
-    <div>
-      <label
-      >
-        Username
+    <div className="App-body">
+      <div id="padding-body">
+      <label id="padding-label">
+        Username:
         <input
+        id='padding-input'
           name="username"
           type="text"
           onChange={handleInput}
           value={username.length > 0 ? username : ''}
         />
       </label>
-      <label
-      >
-        Password
+      </div>
+      <div id="padding-body">
+      <label id="padding-label">
+        Password:
         <input
+        id='padding-input'
           name="password"
           type="password"
           onChange={handleInput}
           value={password.length > 0 ? password : ''}
         />
       </label>
-      <label htmlFor="remember">
+      </div>
+      <div>
+      <label
+      id='label-size'
+      >
         Remember me
         <input
         type={"checkbox"}
         checked={!checkEnable}
         onChange={() => funcRemember()}
         disabled={disableButton}
-
         ></input>
       </label>
-      <div>
+      </div>
+      <div
+      id='div-button'
+      >
       <Link to="/userlist">
         <button
+        id='button-size'
         type="button"
         disabled={disableButton}
         >

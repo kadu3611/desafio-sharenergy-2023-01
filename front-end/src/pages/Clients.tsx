@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { getallClient, controllerBoolean, newClient,
-     upClient, viewClient, deleteClientId, listClients} from '../components/FunctionsClients'
+import {
+    getallClient, controllerBoolean, newClient,
+    upClient, viewClient, deleteClientId, listClients
+} from '../components/FunctionsClients'
 import NavBar from '../components/NavBar';
+import '../styles/clients.css'
 
 
 const Clients: React.FC = () => {
 
-    const arrayInput = ["Nome", "Email", "Telefone", "Endereço", "CPF"];
+    const arrayInput = ["Nome:", "Email:", "Telefone:", "Endereço:", "CPF:"];
     const [registerBoolean, setRegisterBoolean] = useState(false);
     const [updateBoolean, setUpdateBoolean] = useState(false);
     const [viewBoolean, setViewrBoolean] = useState(false);
@@ -22,7 +25,7 @@ const Clients: React.FC = () => {
     const [searchUsername, setSearchUsername] = useState('');
     const [dateClientBoolean, setDateClientBoolean] = useState(false);
     const [dateDom, setDateDom] = useState(<div></div>);
-  
+
     const handleInput = (event: any): void => {
         const { target } = event
         const { value, name } = target
@@ -38,12 +41,15 @@ const Clients: React.FC = () => {
         const allValues = { ...registerDates, [name]: value }
         setRegisterDates(allValues)
     }
-   
 
-    const buttonBoolean = (text: string, setState:React.Dispatch<React.SetStateAction<boolean>>,
-        state:boolean) => (
-        <div>
+
+    const buttonBoolean = (text: string, setState: React.Dispatch<React.SetStateAction<boolean>>,
+        state: boolean) => (
+        <div
+            className='client-div-button'
+        >
             <button
+                id='client-button'
                 name={text}
                 type="button"
                 onClick={() => controllerBoolean(setState, state)}
@@ -53,133 +59,214 @@ const Clients: React.FC = () => {
         </div>
     )
 
-    const divRegister = (setState:React.Dispatch<React.SetStateAction<boolean>>,
-        state:boolean) => (
-       <div>
-           {
-               arrayInput.map((item: string, index: number) => (
-                   <div
-                       key={index}
-                   >
-                       <label>
-                           {item}
-                           <input
-                               name={item}
-                               type={item === "Telefone" || item === "CPF"
-                                   ?
-                                   "number" : "text"}
-                               onChange={handleInputRegister}
-                           />
-                       </label>
-                   </div>
-               ))
-           }
-           <div>
-               <button
-                   type="button"
-                   onClick={() => newClient(registerDates, setFetch)}
-               >
-                   Save
-               </button>
-               <button
-                   type="button"
-                   onClick={() => controllerBoolean(setState, state)}
-               >
-                   Closed register
-               </button>
-           </div>
-       </div>
+    const divRegister = (setState: React.Dispatch<React.SetStateAction<boolean>>,
+        state: boolean) => (
+        <div
+            className='client-div-button-register'
+        >
+            {
+                arrayInput.map((item: string, index: number) => (
+                    <div
+                        key={index}
+                    >
+                        <label
+                            className='client-label-register'
+                        >
+                            {item}
+                            <div>
+                                <input
+                                    name={item}
+                                    type={item === "Telefone" || item === "CPF"
+                                        ?
+                                        "number" : "text"}
+                                    onChange={handleInputRegister}
+                                />
+                            </div>
+                        </label>
+                    </div>
+                ))
+            }
+            <div
+                className='client-div-bottom-button'
+            >
+                <div
+                    id='client-bottom-button'
+                >
+                    <button
+                        id='client-button-register'
+                        type="button"
+                        onClick={() => newClient(registerDates, setFetch)}
+                    >
+                        Save
+                    </button>
+                </div>
+                <div>
+                    <button
+                        id='client-button-register'
+
+                        type="button"
+                        onClick={() => controllerBoolean(setState, state)}
+                    >
+                        Closed register
+                    </button>
+                </div>
+            </div>
+        </div>
     );
 
-    const divSearch = (text: string, setState:React.Dispatch<React.SetStateAction<boolean>>,
-        state:boolean) => (
-            
-        <div>
-            {
-            dateDom.props.children 
-            ?
-            dateDom 
-            :
+    const divSearchDelete = (text: string, setState: React.Dispatch<React.SetStateAction<boolean>>,
+        state: boolean) => (
+
+        <div
+            className='client-div-delete-view'
+
+        >
             <div>
-            <label>
-                id:
-                <input
-                    type="text"
-                    name={text}
-                    onChange={handleInput}
-                />
-            </label>
-            <button
-                type="button"
-                onClick={() => {
-                    if(text === "view"){ viewClient(searchUsername, 
-                        setDateClientBoolean, dateClientBoolean, setDateDom)
-                    }
-                    else{
-                        deleteClientId(searchUsername, setFetch)
-                    }
-                }}
-            >
-                {
-                    text === "view" ? "Search" : "Delete"
-                }
-            </button>
+                <label>
+                    id:
+                    <div>
+                    <input
+                        type="text"
+                        name={text}
+                        onChange={handleInput}
+                    />
+                    </div>
+                </label>
+                <button
+                    id='client-button-search-delete'
+                    type="button"
+                    onClick={() => deleteClientId(searchUsername, setFetch)}
+                >
+                    Delete
+                </button>
             </div>
-}
-            <button
-                type="button"
-                onClick={() => controllerBoolean(setState, state)}
+            <div
+                className='client-div-delete-closed'
             >
-                Closed register
-            </button>
+                <button
+                id='client-button-closed'
+                    type="button"
+                    onClick={() => controllerBoolean(setState, state)}
+                >
+                    Closed register
+                </button>
+            </div>
         </div>
     )
 
-    const InputsUpdate = (text:string, setState:React.Dispatch<React.SetStateAction<boolean>>,
-        state:boolean) =>(
-        <div>
+
+    const divSearchView = (text: string, setState: React.Dispatch<React.SetStateAction<boolean>>,
+        state: boolean) => (
+        <div
+            className='client-div-delete-view'
+        >
+            {
+                dateDom.props.children
+                    ?
+                    dateDom
+                    :
+                    <div>
+                        <label>
+                            id:
+                            <div>
+                                <input
+                                    type="text"
+                                    name={text}
+                                    onChange={handleInput}
+                                />
+                            </div>
+
+                        </label>
+                        <button
+                            id='client-button-search-view'
+                            type="button"
+                            onClick={() =>
+                                viewClient(searchUsername,
+                                    setDateClientBoolean, dateClientBoolean, setDateDom)
+                            }
+                        >
+                            Search
+                        </button>
+                    </div>
+            }
+            <div
+                className='client-div-view-closed'
+            >
+                <button
+                id='client-button-closed '
+                    type="button"
+                    onClick={() => controllerBoolean(setState, state)}
+                >
+                    Closed register
+                </button>
+            </div>
+        </div>
+    )
+
+    const InputsUpdate = (text: string, setState: React.Dispatch<React.SetStateAction<boolean>>,
+        state: boolean) => (
+        <div
+            className='client-div-update'
+        >
             <label>
                 id:
-                <input
-                    type="text"
-                    name={text}
-                    onChange={handleInput}
-                />
+                <div>
+                    <input
+                        type="text"
+                        name={text}
+                        onChange={handleInput}
+                    />
+                </div>
             </label>
             {
                 arrayInput.map((item: string, index: number) => (
                     <div
                         key={index}
                     >
-                        <label>
+                        <label
+                            className='client-label-register'
+                        >
                             {item}
-                            <input
-                                name={item}
-                                type={item === "Telefone" || item === "CPF"
-                                    ?
-                                    "number" : "text"}
-                                onChange={handleInput}
-                            />
+                            <div>
+                                <input
+                                    name={item}
+                                    type={item === "Telefone" || item === "CPF"
+                                        ?
+                                        "number" : "text"}
+                                    onChange={handleInput}
+                                />
+                            </div>
                         </label>
                     </div>
                 ))
             }
-            <div>
-            <button
-                type="button"
-                onClick={() => upClient(registerDates, searchUsername, setFetch)}
+            <div
+                className='client-div-update-map'
             >
-                Save
-            </button>
-            <button
-                type="button"
-                onClick={() => controllerBoolean(setState, state)}
-            >
-                Closed register
-            </button>
+                <div>
+                    <button
+                        className='client-div-button'
+                        type="button"
+                        onClick={() => upClient(registerDates, searchUsername, setFetch)}
+                    >
+                        Save
+                    </button>
+                </div>
+                <div>
+
+                    <button
+                        className='client-div-button'
+
+                        type="button"
+                        onClick={() => controllerBoolean(setState, state)}
+                    >
+                        Closed register
+                    </button>
+                </div>
             </div>
         </div>
-        )
+    )
+
 
 
     useEffect(() => {
@@ -188,8 +275,16 @@ const Clients: React.FC = () => {
 
     return (
         <div>
-            <NavBar/>
-            {listClients(fetch)}
+            <NavBar />
+            <div
+                className='client-all'
+
+            >
+                {
+                    listClients(fetch)
+                }
+            </div>
+
             {
                 registerBoolean ?
                     divRegister(setRegisterBoolean, registerBoolean)
@@ -204,13 +299,13 @@ const Clients: React.FC = () => {
             }
             {
                 viewBoolean ?
-                    divSearch("view", setViewrBoolean, viewBoolean)
+                    divSearchView("view", setViewrBoolean, viewBoolean)
                     :
                     buttonBoolean("View information", setViewrBoolean, viewBoolean)
             }
             {
                 deleteBoolean ?
-                    divSearch("delete", setDeleteBoolean, deleteBoolean)
+                    divSearchDelete("delete", setDeleteBoolean, deleteBoolean)
                     :
                     buttonBoolean("Delete Client", setDeleteBoolean, deleteBoolean)
             }
