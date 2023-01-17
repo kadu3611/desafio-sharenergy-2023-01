@@ -19,7 +19,6 @@ const StatusCodeCat: React.FC = () => {
 
   const [apiCat, setApiCat] = useState('')
 
-
   const submitApi = async () => {
     try {
       setApiCat(`https://http.cat/${numberHistory}`)
