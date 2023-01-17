@@ -1,46 +1,65 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## `Back-end `
 
-In the project directory, you can run:
+Foi utilizado para o banco do mongoDB o site do mesmo como hospedeiro.
+Para o banco funcionar na sua máquina será necessário seguir os passo a seguir:
+
+# Vá ao site do MongoDB:
+
+* link para fazer login:
+https://www.mongodb.com/cloud/atlas/register
+
+* Após o login, nesta página(https://cloud.mongodb.com/v2/63bdfef41443017aaccae0bb#/clusters),
+click no botão 'Create'
+
+* No link(https://cloud.mongodb.com/v2/63bdfef41443017aaccae0bb#/clusters/edit?from=ctaClusterHeader)
+vá vá nas opções que fica abaixo do nome 'Atlas'
+
+* Click em 'New Project'
+
+* Dê um nome ao seu projeto e click em next
+
+* Click em 'Create Project'
+
+* Click em 'Add Current IP Adress' para que seja pego o seu ip atual para funcionando do banco
+
+* Click em 'Build Database'
+
+* Vá à opção que mais condizer com o que desejar, entre os serviços prestados, e click em 'Create'
+
+* Click em 'Create Cluster'
+
+* Adicione um username e um password que será usado posteriormente
+
+* Feito, click em 'Create User'
+
+* Click em 'Finish and Closed'
+
+* CLick em 'Connect' para gerar o código de conexão
+
+* Vá em 'Connect your application'(2ª opção)
+
+* Cópie o código gerado
+
+* Vá nos arquivos de back-end/src/server.ts
+
+* Cole o link copiado em na:
+ => Linha 16(mongoose.connect())
+
+ * Em <password> coloque o password adicionado anteriormente
+ Ex.: 'mongoose.connect("mongodb+srv://desafio:desafio1234@cluster0.hsuctxx.mongodb.net/?retryWrites=true&w=majority")'
+
+
+### `npm install`
+
+Para instalar as dependências, tanto em front quanto em back-end
+
+### `npm run dev`
+
+Para executar o back-end no seu computador. Lembre-se de se digirir à pasta antes de executar
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Para executar o projeto em front-end na porta (http://localhost:3000) do seu browser. Lembre-se de se digirir à pasta antes de executar
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
