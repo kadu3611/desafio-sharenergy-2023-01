@@ -4,7 +4,7 @@
 ## `Back-end `
 
 Foi utilizado para o banco do mongoDB o site do mesmo como hospedeiro.
-Para o banco funcionar na sua máquina será necessário seguir os passo a seguir:
+Para o banco funcionar na sua máquina será necessário seguir os passos a seguir:
 
 # Vá ao site do MongoDB:
 
