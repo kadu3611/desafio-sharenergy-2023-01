@@ -9,7 +9,6 @@ const getAll = async () => axios
         const { data, status } = response;
         if (status !== 200) throw new Error()
         return data
-        // faz algo com o 'data
 
     })
 
@@ -49,13 +48,6 @@ const deleteClient = async (id: string) => axios
         if (status !== 200) throw new Error()
         return data
     });
-
-// const getAll = async () => axios
-//     .get(`${BASE_URL}/users`)
-//     .catch((error) => {
-//         console.log(error);        
-//     });
-
 
 export {
     getAll,
